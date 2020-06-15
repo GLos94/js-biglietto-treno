@@ -8,18 +8,21 @@ var anni = prompt("Quanti anni hai?")
 
 // calcola il prezzo totale del viaggio senza applicare sconti
 var prezzoBase = 0.21 * km
+var prezzoBaseArrotondato = Math.round(prezzoBase * 100) / 100;
 
 
 // calcola il prezzo scontato del 20% per gli under 18
-var calcoloPercentuale = Math.ceil((prezzoBase / 100) * 20)
+var calcoloPercentuale = ((prezzoBase / 100) * 20)
+var prezzoArrotondato = Math.round(calcoloPercentuale * 100) / 100;
 
-var prezzoFinaleScontatoUnder = prezzoBase - calcoloPercentuale
+var prezzoFinaleScontatoUnder = prezzoBase - prezzoArrotondato
 
 
 // calcola il prezzo scontato del 40% per gli over 65
-var calcoloPercentuale = Math.ceil((prezzoBase / 100) * 40)
+var calcoloPercentuale = ((prezzoBase / 100) * 40)
+var prezzoArrotondato = Math.round(calcoloPercentuale * 100) / 100;
 
-var prezzoFinaleScontatoOver = prezzoBase - calcoloPercentuale
+var prezzoFinaleScontatoOver = prezzoBase - prezzoArrotondato
 
 
 
@@ -29,5 +32,5 @@ if (anni < 18){
 } else if (anni > 65)
   document.getElementById('prezzo-biglietto').innerHTML = "Il tuo biglietto costerà € " + prezzoFinaleScontatoOver + " Ti è stato applicato uno sconto del 40%";
  else {
-  document.getElementById('prezzo-biglietto').innerHTML = "Il tuo biglietto costerà € " + prezzoBase;
+  document.getElementById('prezzo-biglietto').innerHTML = "Il tuo biglietto costerà € " + prezzoBaseArrotondato;
 }
